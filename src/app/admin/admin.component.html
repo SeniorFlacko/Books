@@ -1,0 +1,55 @@
+
+<div class="flex-padre">
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" *ngIf="!loading; else loader" >
+      <label>Titulo</label>
+      <input type="text" class="form-control" formControlName="titulo" [class.is-valid]="title.valid" [class.is-invalid]="tituloInvalid">
+        <ng-container *ngIf="tituloInvalid">
+          <div *ngIf="title.errors.required" class="invalid-feedback">
+              El titulo es requerido.
+          </div>
+          <div *ngIf="title.errors.maxlength" class="invalid-feedback">
+              El titulo no puede tener mas de 20 caracteres.
+          </div>              
+        </ng-container>
+      
+      <label>Resumen</label>
+      <textarea cols="30" rows="10" class="form-control" formControlName="resumen" [class.is-valid]="resumen.valid" [class.is-invalid]="resumenInvalid"> 
+      </textarea>
+        <ng-container *ngIf="resumen.invalid && (resumen.dirty || resumen.touched)">
+          <div *ngIf="resumen.getError('required')" class="invalid-feedback">
+            El resumen es requerido.
+          </div>
+          <div *ngIf="resumen.getError('maxlength')" class="invalid-feedback">
+            El resumen no puede tener mas de 333 caracteres.
+          </div>
+        </ng-container>
+      
+      <label>Imagen del Libro</label>
+      <input type="file" accept="image/gif,image/jpeg,image/png" class="form-control" formControlName="imageUrl" (change)="onImageChange($event)" [class.is-valid]="imageUrl.valid" [class.is-invalid]="imageUrlInvalid">
+        <ng-container *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)">
+          <div *ngIf="imageUrl.getError('required')" class="invalid-feedback">
+            La imagen es requerida
+          </div>
+        </ng-container>
+  
+  
+      <label>Archivo PDF del libro</label>
+      <input type="file" accept=".pdf,application/pdf" class="form-control" formControlName="downloadUrl" (change)="onFileChange($event)" [class.is-valid]="downloadUrl.valid" [class.is-invalid]="downloadUrlInvalid">
+        <ng-container *ngIf="downloadUrl.invalid && (downloadUrl.dirty || downloadUrl.touched)">
+          <div *ngIf="downloadUrl.getError('required')" class="invalid-feedback">
+            El downloadUrl es requerido.
+          </div>
+        </ng-container> 
+  
+    <button class="btn btn-primary" type="submit">Enviar!</button>
+  </form>
+</div>
+
+<!-- <pre>
+  {{ bookForm.value | json }}
+</pre> -->
+
+
+ <ng-template #loader>
+    <div class="loader"></div>
+  </ng-template>
