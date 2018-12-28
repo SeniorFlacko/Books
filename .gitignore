@@ -91,7 +91,6 @@ testem.log
 ### Firebase Patch ###
 .runtimeconfig.json
 .firebase/
-environment.ts
-environment.prod
+/src/environments/*.ts
 
 # End of https://www.gitignore.io/api/firebase
