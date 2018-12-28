@@ -41,7 +41,7 @@
           </div>
         </ng-container> 
   
-    <button class="btn btn-primary" type="submit">Enviar!</button>
+    <button [disabled]="bookForm.invalid" class="btn btn-primary" type="submit">Enviar!</button>
   </form>
 </div>
 

@@ -1,3 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/dashboard">Filosofia Libros</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticathed">
+        <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+      </li>
+      <li class="nav-item" *ngIf="!isAuthenticathed">
+        <a class="nav-link cursor-pointer" (click)="login()">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticathed">
+        <a class="nav-link cursor-pointer" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+    <div class="my-2 my-lg-0" *ngIf="isAuthenticathed">
+      <label class="my-2 my-sm-0">Hola, {{ username }}</label>
+    </div>
+  </div>
+</nav>
+
 <div class="card-columns">
   <div class="card" *ngFor="let book of booksArray">
     <img class="card-img-top img-fluid img-thumbnail" [src]="book.imageUrl" alt="Card image cap">

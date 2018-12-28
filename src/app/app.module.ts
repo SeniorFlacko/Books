@@ -9,6 +9,9 @@ import { AdminComponent } from './admin/admin.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import * as firebase from 'firebase';
 import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
+import { SessionService } from './services/session.service';
+import { AuthGuard } from './auth.guard';
 
 
 firebase.initializeApp(environment.firebase);
@@ -26,7 +29,11 @@ firebase.firestore().settings(environment.firestoreSetting);
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    SessionService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
