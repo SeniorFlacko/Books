@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   private books = firebase.firestore().collection('books');
-  private booksArray: any[];
+   booksArray: any[];
 
   constructor(private router: Router) { }
 

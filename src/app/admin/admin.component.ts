@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   private bookForm: FormGroup;
   private image:any;
   private file:any;
-  private loading: boolean = false;
+   loading: boolean = false;
   private books = firebase.firestore().collection('books');
 
   constructor(private fb: FormBuilder, private router: Router) { 
